@@ -1,0 +1,334 @@
+
+
+/* Общие стили */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: var(--secondary-color);
+    line-height: 1.6;
+    height:10000px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Шапка с видео */
+.header {
+    position: relative;
+    width: 100%;
+    height: 1100px;
+    overflow: hidden;
+}
+.about {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Занимает всю высоту экрана */
+    display: flex; /* Включаем Flexbox */
+    flex-direction: column; /* Элементы внутри блока располагаются вертикально */
+    justify-content: center; /* Центрирование по вертикали */
+    align-items: center; /* Центрирование по горизонтали */
+    overflow: hidden;
+    text-align: center; /* Центрирование текста внутри элементов */
+}
+
+.about h1 {
+    margin: 0; /* Убираем отступы у заголовка */
+    font-size: 15rem; /* Размер текста */
+    line-height: 1.7; /* Межстрочный интервал */
+}
+main{
+    width: 100%; /* Ширина блока */
+    height: 1000px; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует дочерние элементы по горизонтали */
+    flex: 1;
+}
+.button {
+    position: relative; /* Абсолютное позиционирование */
+    top: 5%; /* Отцентровка по вертикали */
+    left: 40%; /* Отцентровка по горизонтали */
+    transform: translate(-50%, -50%); /* Смещение для точного центрирования */
+    
+    padding: 15px 30px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Эффект при наведении */
+.button:hover {
+    background-color: green;
+    transform: translate(-50%, -50%) scale(1.1); /* Небольшое увеличение */
+}
+
+
+.button:hover {
+    background-color: rgb(25, 117, 57);
+}
+.overlay-text {
+    position: absolute;
+    top: 50%; /* Размещение по центру */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрирование */
+    color: black; /* Цвет текста */
+    font-size: 24px;
+    font-weight: bold;
+    
+    z-index: 10; /* Поверх картинок */
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    right: 70px;
+    bottom: 70px;
+    z-index: -1;
+}
+
+.header-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.header-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.ex {
+    width: 100%;
+    text-align: center; /* Центрируем заголовок */
+    margin-top: 1000px; /* Отступ от предыдущего блока */
+    color:red;
+    margin-top:850px;
+}
+
+.card-container {
+    width: 100%; /* Ограничиваем ширину для центрирования */
+    margin: 0 auto; /* Центрируем по горизонтали */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 1000px; /* Фиксированная высота контейнера */
+    overflow: hidden; /* Скрываем выходящие за границы элементы */
+    
+}
+
+h1 {
+    background-color: black;
+    width:100%;
+    height: 50px;
+    font-size: 2rem;
+    margin-bottom: 20px; /* Отступ от заголовка до карточек */
+}
+
+.card {
+    position: absolute;
+    width: 550px;
+    height: 700px;
+    background-color: rgb(6, 79, 6);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+.card img {
+    width: 80%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card:not(.active) {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* Подвал */
+.footer {
+    position:relative;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--secondary-color);
+    padding: 40px 0;
+    margin-top: 60px;
+    text-align: center;
+} 
+
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.8;
+}
+
+/* Авторское право */
+.footer-copyright {
+    font-size: 14px;
+    margin-top: 20px;
+    color: var(--accent-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .callback, .phone {
+        margin-bottom: 10px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+.logo {
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+
+/* Контейнер для анимации */
+.animation-container {
+    overflow: hidden;
+    background-color: none;
+}
+
+
+/* Стили для Stackman */
+.stackman {
+    position: absolute;
+    bottom: 20px;
+    right: -100px; /* Начальное положение за пределами экрана */
+    width: 350px;
+    height: auto;
+    animation: moveStackman 10s linear infinite;
+}
+
+/* Стили для компьютера */
+.stakm1 {
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    width: 150px;
+    height: auto;
+    opacity: 0; /* Начальное состояние: невидим */
+    transform: translateX(50%);
+}
+
+/* Стили для кафедры и доски */
+.stakm2 {
+    position: absolute;
+    bottom: 20px;
+    left: -200px; /* Начальное положение за пределами экрана */
+    width: 200px;
+    height: auto;
+    opacity: 0; /* Начальное состояние: невидим */
+}
+
+/* Анимация движения Stackman */
+@keyframes moveStackman {
+    0% {
+        right: -200px; /* Начинает за пределами экрана (справа) */
+    }
+    10% {
+        right: 20%; /* Двигается к первой остановке (1/5 экрана) */
+    }
+    20% {
+        right: 20%; /* Стоит 2 секунды */
+    }
+    30% {
+        right: 40%; /* Двигается ко 2-й остановке */
+    }
+    40% {
+        right: 40%; /* Стоит 2 секунды */
+    }
+    50% {
+        right: 60%; /* Двигается к 3-й остановке */
+    }
+    60% {
+        right: 60%; /* Стоит 2 секунды */
+    }
+    70% {
+        right: 80%; /* Двигается к 4-й остановке */
+    }
+    80% {
+        right: 80%; /* Стоит 2 секунды */
+    }
+    90% {
+        right: 100%; /* Двигается к последней остановке перед выходом */
+    }
+    100% {
+        right: 100%; /* Уходит влево за экран */
+    }
+}
+
