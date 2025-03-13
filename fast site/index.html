@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+  <head>
+  {% block head %}
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="Создание сайтов - Cetera Labs, www.cetera.ru, 2016">
+    <meta name="author" content="Cetera Labs, http://www.cetera.ru/, {{ _('создание сайтов') }}, {{ _('поддержка сайтов') }}, {{ _('продвижение сайтов') }}">
+    <meta name="cmsmagazine" content="f21b68cb09efe1a7161ca2caaacaf749">
+	
+	{{ application.showTitle() }}
+	{{ application.showMeta('description') }}
+	{{ application.showMeta('keywords') }}
+	{{ application.showCSS() }}
+	{{ application.showHeadStrings() }}	
+	
+    <link rel="apple-touch-icon" sizes="180x180" href="main.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ basePath }}images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="194x194" href="{{ basePath }}images/favicon/favicon-194x194.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ basePath }}images/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ basePath }}images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ basePath }}images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{ basePath }}images/favicon/safari-pinned-tab.svg" color="#5f4b8b">
+    <link rel="shortcut icon" href="{{ basePath }}images/favicon/favicon.ico">
+    <meta name="msapplication-config" content="{{ basePath }}images/favicon/browserconfig.xml">
+	
+	<meta name="msapplication-TileColor" content="#5f4b8b">
+    <meta name="theme-color" content="#5f4b8b">
+	
+	{% if config.code_head is defined and config.code_head %}{{ config.code_head|raw }}{% endif %}
+	
+  {% endblock %}
+  </head>
+  <body>
+    {{ application.showAdminPanel() }}
+	
+    <div class="padding-top-4 padding-bottom-2 text-size-small background-primary">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="small-24 large-9 cell medium-order-2">
+            <div class="padding-bottom-2 text-left medium-text-center large-text-right">
+				<span class="text-white hide-for-medium" data-responsive-toggle="responsive-menu" data-hide-for="medium"><span data-toggle><i class="fas fa-bars fa-lg"></i></span>&nbsp;&nbsp;&nbsp;</span>
+				<a class="text-white" href="tel:{{ config.phone|phone }}" title="Позвонить"><strong><i class="fas fa-phone fa-lg hide-for-small-only"></i>&nbsp; {{ config.phone|raw }}</strong></a>&nbsp;&nbsp;&nbsp;
+				<a class="text-white" href="mailto:{{ config.email }}" title="Написать"><strong><i class="far fa-envelope fa-lg hide-for-small-only"></i>&nbsp; {{ config.email }}</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="text-white" href="#" title="Поиск" data-toggle="search"><i class="fas fa-lg fa-search"></i></a></div>
+          </div>
+		  {% if config.menu_top is defined and config.menu_top %}
+          <div class="small-24 large-15 cell medium-order-1">
+            <div class="padding-bottom-2" id="responsive-menu">
+              {% widget 'MenuUser' with { alias: config.menu_top, css_class: 'menu-top' } %}
+              <div class="clearfix"></div>
+            </div>
+          </div>
+		  {% endif %}	
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="small-24 large-10 large-offset-14 cell">
+          <div class="dd" id="search" data-toggler=".dd_show">
+            <div class="dd__content padding-6 background-main">
+              <form action="/search/" method="get" data-abide="" novalidate="novalidate">
+                <div class="input-group">
+                  <input class="input-group-field" name="query" type="text" placeholder="{{ _('Поиск') }}">
+                  <div class="input-group-button">
+                    <button class="button primary" type="submit"><i class="fas fa-search fa-inverse"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>	
+	
+    <div class="background-main padding-vertical-10">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="cell auto text-center large-text-left align-self-middle"><a href="/" title="FastSite.ru"><img src="{% if config.logo is defined and config.logo %}{{ config.logo }}{% else %}{% if server.pic %}{{ server.pic }}{% else %}{{ basePath }}images/logo.svg{% endif %}{% endif %}" style="max-width: 15rem;" alt="FastSite.ru" title="FastSite.ru"></a></div>
+          <div class="small-4 cell hide-for-medium align-self-middle text-center">
+            <div data-responsive-toggle="menu" data-hide-for="medium">
+              <div class="text-primary" data-toggle><i class="fas fa-bars fa-2x"></i></div>
+            </div>
+          </div>
+		  {% if config.menu_main is defined and config.menu_main %}
+          <div class="small-24 large-18 large-offset-2 cell align-self-middle" id="menu">
+            <div class="margin-bottom-6 hide-for-large"></div>
+			{% widget 'MenuUser' with { alias: config.menu_main, css_class: 'menu-base', template: 'main.twig' } %}
+          </div>
+		  {% endif %}
+        </div>
+      </div>
+    </div>
+
+	{% block main %}{% endblock %}
+
+	{% if config.code_contacts is defined and config.code_contacts %}{{ config.code_contacts|raw }}{% endif %}
+
+    <div class="padding-top-12 padding-bottom-6 background-quaternary text-white">
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="small-24 medium-12 large-6 medium-order-1 large-order-1 cell margin-bottom-6"><a href="/" title="FastSite.ru"><img src="{{ basePath }}images/logo_white.svg" style="max-width: 10rem;" alt="FastSite.ru" title="FastSite.ru"></a></div>
+          {% if config.menu_bottom is defined and config.menu_bottom %}
+		  <nav class="small-24 medium-12 large-6 medium-order-3 large-order-2 cell margin-bottom-4">
+            <h6 class="margin-bottom-3">{{ _('Навигация') }}</h6>
+			{% widget 'MenuUser' with { alias: config.menu_bottom, template: 'footer.twig' } %}
+          </nav>
+		  {% endif %}
+          <div class="small-24 medium-12 large-6 medium-order-2 large-order-3 cell margin-bottom-3">
+            {{ config.address|raw }}
+          </div>
+          <div class="small-24 medium-12 large-6 medium-order-4 large-order-4 cell margin-bottom-3">
+            <h6 class="margin-bottom-3"> {{ _('Телефон') }}</h6>
+            <div class="margin-bottom-3"><a class="text-tertiary" href="tel:{{ config.phone|phone }}" title="Позвонить">{{ config.phone|raw }}</a></div>
+            <h6 class="margin-bottom-3"> E-mail</h6>
+            <div class="margin-bottom-3"><a class="text-tertiary" href="mailto:{{ config.email }}" title="Написать">{{ config.email }}</a></div>
+          </div>
+        </div>
+      </div>
+	  {% if config.code_footer is defined and config.code_footer %}{{ config.code_footer|raw }}{% endif %}
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="cell text-center text-size-small">
+            &nbsp;&nbsp;
+            &copy;&nbsp;<a class="text-tertiary" href="/" title="FastSite.ru">{{ server.name }}</a>,&nbsp;2002–2019
+            &nbsp;&nbsp; &nbsp;&nbsp;
+            <a class="text-tertiary" target="_blank" href="{{ _('https://cetera.ru/') }}" title="Создание интернет-магазина">{{ _('Создание интернет-магазина') }}</a>&nbsp;—&nbsp;Cetera&nbsp;Labs&nbsp;&nbsp; &nbsp;&nbsp;
+			<a class="text-tertiary" target="_blank" href="https://www.cetera.ru/support/default.php?project=FSC&amp;lang={{ config.language }}&amp;page={{ currentPage|default("") }}" title="Сообщить об ошибке">{{ _('Сообщить об ошибке') }}</a>&nbsp;&nbsp; &nbsp;&nbsp;
+			<a class="text-tertiary" target="_blank" href="/about/privacy_statement" title="Политика конфиденциальности">{{ _('Политика конфиденциальности') }}</a>&nbsp;&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ application.showScripts() }}
+  </body>
+</html>
